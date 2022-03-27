@@ -1,0 +1,25 @@
+package hello;
+import java.io.*;
+import java.util.*;
+class Leakybucket {
+    public static void main (String[] args) {
+        int x,y,z;
+        int a,b,c;
+        y=0;   
+        x=4;
+        b=10;
+        a=4;
+        z=1;
+        for(int i=0;i<x;i++)
+        { c=b-y; 
+              if(a<=(c))        {
+                y+=a;
+                System.out.println("Buffer size= "+y+" out of bucket size= "+b);}
+            else
+            { System.out.println("Packet loss = "  +(a-(c)));    
+                y=b;
+                 System.out.println("Buffer size= "+y+  " out of bucket size= "+b); }
+            y-=z;
+        }
+        }
+    }
