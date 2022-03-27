@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+/**
+ * rsa
+ */
+public class rsa {
+    public static int mul(int x, int y, int n) {
+        // declare 2 new variables
+        int k = 1, j;
+        for (j = 1; j <= y; j++)
+            k = (k * x) % n;
+        return k;
+    }
+    public static void main(String[] args) {
+        String msg;
+        int pt[] = new int[100];
+        int ct[] = new int[100];
+        int n=253, d=17, e=13, i;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the message to Encrypt");
+        msg = sc.nextLine();
+        for(i=0;i<msg.length();i++)
+            pt[i] = msg.charAt(i);
+
+        for(i=0;i<msg.length();i++)        
+            ct[i] = mul(pt[i],e,n);
+        
+        System.out.println("The encrypted message is");
+        for(i=0;i<msg.length();i++)        
+            System.out.print(ct[i]);
+        
+        System.out.println("\n");
+        for(i=0;i<msg.length();i++)
+            pt[i] = mul(ct[i],d,n);
+
+        System.out.println("The decrypted message is");
+        for(i=0;i<msg.length();i++)        
+            System.out.print((char)pt[i]);
+        
+        sc.close();
+    }
+}
