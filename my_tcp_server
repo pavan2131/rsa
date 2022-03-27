@@ -1,0 +1,30 @@
+package hello;
+import java.net.*;
+import java.util.*;
+import java.io.*;
+import java.net.*;
+public class TCPServer1
+{
+public static void main(String[] args)
+{
+try
+{
+ServerSocket serversocket=new ServerSocket(1234);
+System.out.println("server has started ");
+Socket skt=serversocket.accept();
+System.out.println("server has connnected to client");
+System.out.println("Enter message to be sent to client");
+Scanner sc=new Scanner(System.in);
+String read=sc.nextLine();
+PrintWriter out=new PrintWriter(skt.getOutputStream(),true);
+// System.out.println("Sending String"+data+"'\n");
+out.print(read);
+out.close();
+skt.close();
+}
+catch(Exception e)
+{
+System.out.print(e.getMessage());
+}
+}
+}
